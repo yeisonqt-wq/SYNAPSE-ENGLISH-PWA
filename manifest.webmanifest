@@ -1,0 +1,16 @@
+{
+  "id": "/SYNAPSE-ENGLISH-PWA/",
+  "name": "SYNAPSE ENGLISH — Campus académico",
+  "short_name": "SYNAPSE",
+  "description": "Portal académico de estudiantes y docentes de Teacher Yeison Quintana Téllez.",
+  "lang": "es",
+  "start_url": "/SYNAPSE-ENGLISH-PWA/",
+  "scope": "/SYNAPSE-ENGLISH-PWA/",
+  "display": "standalone",
+  "background_color": "#091120",
+  "theme_color": "#0a1324",
+  "icons": [
+    {"src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
