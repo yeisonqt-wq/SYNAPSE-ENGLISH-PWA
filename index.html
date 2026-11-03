@@ -65,6 +65,8 @@
     .boton-estudiantes:hover{background:#3982f3;transform:translateY(-2px);box-shadow:0 14px 25px #174c9d66}
     .boton-docentes{background:#dfb969;color:#14233b;border-color:#f3d49a;box-shadow:0 10px 20px #ad802737}
     .boton-docentes:hover{background:#f1ce85;transform:translateY(-2px);box-shadow:0 14px 25px #ad802754}
+    .acceso-alternativo{display:block;text-align:center;margin-top:13px;color:#cbdaf0;font-size:12px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    .acceso-alternativo:hover{color:#fff}
     .boton:focus-visible,.marca:focus-visible{outline:3px solid #c6e1ff;outline-offset:4px}
     .avisoprivado{display:flex;align-items:flex-start;gap:8px;margin-top:13px;color:#aebfd3;font-size:11px;line-height:1.6}
     .avisoprivado svg{width:15px;height:15px;flex:none;margin-top:2px;stroke:#e6bf70;fill:none;stroke-width:1.8}
@@ -119,10 +121,11 @@
             <span class="icono-tarjeta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5.5 3 8.5 8 10 5-1.5 8-4.5 8-10V7l-8-4Zm-3 9 2 2 4-4"/></svg></span>
             <h3>Panel privado del docente</h3>
             <p>Gestiona matrículas, actividades, calificaciones, recuperaciones, cuestionarios, guías y herramientas de diagnóstico desde un espacio administrativo.</p>
-            <a class="boton boton-docentes" href="https://script.google.com/macros/s/AKfycbyIYhEO-owt3FCZRcELFN47u3afkY-NnMVq5Znutir2BqgxkbbH4u66fgESF96OpwrZZw/exec" target="_blank" rel="noopener noreferrer">
-              Ingresar como docente
+            <a class="boton boton-docentes" href="https://accounts.google.com/AccountChooser?continue=https%3A%2F%2Fscript.google.com%2Fmacros%2Fs%2FAKfycbyIYhEO-owt3FCZRcELFN47u3afkY-NnMVq5Znutir2BqgxkbbH4u66fgESF96OpwrZZw%2Fexec" target="_blank" rel="noopener noreferrer">
+              Elegir cuenta de Google e ingresar
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
             </a>
+            <a class="acceso-alternativo" href="https://script.google.com/macros/s/AKfycbyIYhEO-owt3FCZRcELFN47u3afkY-NnMVq5Znutir2BqgxkbbH4u66fgESF96OpwrZZw/exec" target="_blank" rel="noopener noreferrer">Entrar directamente con mi cuenta actual</a>
             <span class="avisoprivado"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Acceso restringido a la cuenta de Google autorizada. Este sitio no almacena contraseñas ni datos de estudiantes.</span>
           </article>
         </div>
