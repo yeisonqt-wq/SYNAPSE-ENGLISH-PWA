@@ -1,200 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="theme-color"
-    content="#0f172a"
-  >
-
-  <title>SYNAPSE ENGLISH</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1324">
+  <meta name="description" content="SYNAPSE ENGLISH: acceso al campus académico para estudiantes y docentes de Yeison Quintana Téllez.">
+  <title>SYNAPSE ENGLISH | Campus académico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-
-    * {
-      box-sizing: border-box;
+    :root {
+      color-scheme: dark;
+      --fondo:#091120; --superficie:#111e32; --borde:#304460;
+      --texto:#f2f7ff; --suave:#adbed4; --azul:#63a5ff;
+      --dorado:#e6bf70; --verde:#86d8bd;
+      font-family:'Manrope','Segoe UI',Arial,sans-serif;
     }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .contenedor {
-      width: 100%;
-      max-width: 460px;
-    }
-
-    .encabezado {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .logo {
-      width: 90px;
-      height: 90px;
-      background: #2563eb;
-      border-radius: 25px;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 45px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: 1px;
-    }
-
-    .subtitulo {
-      color: #93c5fd;
-      margin-top: 12px;
-      font-size: 15px;
-    }
-
-    .tarjeta {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 20px;
-    }
-
-    .tarjeta h2 {
-      margin-top: 0;
-      font-size: 21px;
-    }
-
-    .tarjeta p {
-      color: #cbd5e1;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .boton {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      border-radius: 12px;
-      text-align: center;
-      font-weight: bold;
-      text-decoration: none;
-      color: white;
-      border: none;
-      background: #2563eb;
-      font-size: 15px;
-    }
-
-    .boton-docente {
-      background: #334155;
-    }
-
-    .pendiente {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-
-    footer {
-      text-align: center;
-      color: #94a3b8;
-      margin-top: 35px;
-      font-size: 12px;
-    }
-
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;color:var(--texto);background:var(--fondo);line-height:1.6}
+    body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 850px 480px at 50% -170px,#26518b7c,transparent 80%),linear-gradient(135deg,#0b1528,#0a1120 68%)}
+    a{color:inherit}
+    .marco{width:min(1160px,calc(100% - 40px));margin:auto}
+    .barra{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:23px 0;border-bottom:1px solid #34476188}
+    .marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .marca-sello{width:44px;height:44px;display:grid;place-items:center;border:1px solid #5985c1;border-radius:13px;background:linear-gradient(145deg,#20385c,#111e33)}
+    .marca-sello svg{width:29px;height:29px}
+    .marca-texto{display:flex;flex-direction:column;line-height:1.18}
+    .marca-texto strong{font-size:15px;letter-spacing:.10em}
+    .marca-texto span{font-size:10px;font-weight:700;letter-spacing:.18em;color:#a9c6e9;margin-top:5px}
+    .etiqueta-superior{border:1px solid #3c597e;background:#17263d;border-radius:999px;padding:7px 13px;color:#b8d2f4;font-size:11px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
+    .presentacion{padding:83px 0 52px;text-align:center}
+    .insignia{display:inline-flex;align-items:center;gap:9px;padding:7px 13px;color:#d7e8ff;background:#182943;border:1px solid #355579;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .insignia .punto{width:7px;height:7px;border-radius:50%;background:var(--dorado);box-shadow:0 0 0 4px #e6bf701b}
+    h1{margin:20px 0 10px;font-size:clamp(35px,6vw,61px);letter-spacing:-.06em;line-height:1.13;font-weight:800}
+    h1 span{color:#8fbdff}
+    .subtitulo{font-weight:750;letter-spacing:.16em;font-size:12px;color:var(--dorado);text-transform:uppercase;margin:0 0 15px}
+    .intro{max-width:650px;margin:0 auto;color:#bbcbe0;font-size:clamp(14px,1.8vw,17px)}
+    .seccion-titulo{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+    .seccion-titulo h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;margin:0;white-space:nowrap}
+    .seccion-titulo::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,#3a5576,transparent)}
+    .accesos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0 0 45px}
+    .tarjeta{position:relative;display:flex;flex-direction:column;min-height:350px;min-width:0;padding:31px;background:linear-gradient(155deg,#16283f,#101b2e 78%);border:1px solid #324966;border-top:3px solid var(--acento);border-radius:21px;box-shadow:0 18px 42px #03081470;overflow:hidden}
+    .tarjeta::after{content:'';position:absolute;right:-100px;top:-95px;width:250px;height:250px;border-radius:50%;background:var(--acento);opacity:.035;pointer-events:none}
+    .estudiantes{--acento:var(--azul)}
+    .docentes{--acento:var(--dorado)}
+    .icono-tarjeta{height:57px;width:57px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--acento) 50%,#283d56);border-radius:17px;color:var(--acento);background:color-mix(in srgb,var(--acento) 12%,#102038)}
+    .icono-tarjeta svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .tarjeta h3{font-size:clamp(20px,2.3vw,25px);letter-spacing:-.035em;margin:21px 0 10px}
+    .tarjeta p{color:var(--suave);font-size:14px;line-height:1.75;margin:0 0 25px;max-width:45ch}
+    .boton{display:inline-flex;justify-content:center;align-items:center;gap:11px;width:100%;min-height:53px;margin-top:auto;padding:13px 18px;font-size:14px;font-weight:800;text-decoration:none;border-radius:12px;border:1px solid transparent;transition:transform .18s,background .18s,box-shadow .18s}
+    .boton svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .boton-estudiantes{background:#2c70db;border-color:#5b99ff;color:white;box-shadow:0 10px 20px #174c9d40}
+    .boton-estudiantes:hover{background:#3982f3;transform:translateY(-2px);box-shadow:0 14px 25px #174c9d66}
+    .boton-docentes{background:#dfb969;color:#14233b;border-color:#f3d49a;box-shadow:0 10px 20px #ad802737}
+    .boton-docentes:hover{background:#f1ce85;transform:translateY(-2px);box-shadow:0 14px 25px #ad802754}
+    .boton:focus-visible,.marca:focus-visible{outline:3px solid #c6e1ff;outline-offset:4px}
+    .avisoprivado{display:flex;align-items:flex-start;gap:8px;margin-top:13px;color:#aebfd3;font-size:11px;line-height:1.6}
+    .avisoprivado svg{width:15px;height:15px;flex:none;margin-top:2px;stroke:#e6bf70;fill:none;stroke-width:1.8}
+    .pie{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:24px 0 32px;border-top:1px solid #314561;color:#9badc5;font-size:12px}
+    .pie strong{color:#c9d8ed;letter-spacing:.09em}
+    @media(max-width:750px){.presentacion{padding:59px 0 38px}.accesos{grid-template-columns:1fr;gap:17px}.tarjeta{min-height:315px;padding:25px}.etiqueta-superior{display:none}}
+    @media(max-width:400px){.marco{width:calc(100% - 26px)}.marca-texto strong{font-size:12px}.marca-texto span{font-size:9px}.presentacion{padding-top:48px}.tarjeta{padding:22px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.boton{transition:none}.boton:hover{transform:none}}
   </style>
-
 </head>
-
 <body>
-
-  <main class="contenedor">
-
-    <header class="encabezado">
-
-      <div class="logo">
-        🎓
-      </div>
-
-      <h1>SYNAPSE ENGLISH</h1>
-
-      <p class="subtitulo">
-        TEACHER YEISON QUINTANA TÉLLEZ
-      </p>
-
-      <p>
-        Plataforma Educativa PRO
-      </p>
-
+  <div class="marco">
+    <header class="barra">
+      <a class="marca" href="#inicio" aria-label="SYNAPSE ENGLISH, volver al inicio">
+        <span class="marca-sello" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M5 14 20 7l15 7-15 7L5 14Z" fill="#e6bf70"/><path d="M11 22v6c6 5 12 5 18 0v-6" stroke="#e6bf70" stroke-width="2" fill="none"/><path d="M34 16v13" stroke="#e6bf70" stroke-width="2"/><circle cx="34" cy="31" r="2" fill="#e6bf70"/></svg>
+        </span>
+        <span class="marca-texto"><strong>SYNAPSE ENGLISH</strong><span>CAMPUS ACADÉMICO</span></span>
+      </a>
+      <span class="etiqueta-superior">Plataforma educativa PRO</span>
     </header>
 
+    <main id="inicio">
+      <section class="presentacion" aria-labelledby="titulo-principal">
+        <span class="insignia"><span class="punto" aria-hidden="true"></span> Educación · Tecnología · Progreso</span>
+        <h1 id="titulo-principal">Bienvenido a <span>SYNAPSE ENGLISH</span></h1>
+        <p class="subtitulo">Teacher Yeison Quintana Téllez</p>
+        <p class="intro">Tu espacio académico en línea para aprender, consultar avances y participar en las actividades del curso. Selecciona tu tipo de acceso para continuar.</p>
+      </section>
 
-    <section class="tarjeta">
+      <section aria-labelledby="titulo-accesos">
+        <div class="seccion-titulo"><h2 id="titulo-accesos">Accesos al campus</h2></div>
+        <div class="accesos">
+          <article class="tarjeta estudiantes">
+            <span class="icono-tarjeta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9Zm5 4v5c3.5 2.7 6.5 2.7 10 0v-5M21 10v7"/></svg></span>
+            <h3>Portal del estudiante</h3>
+            <p>Consulta tus calificaciones, desarrolla cuestionarios, descarga guías de estudio, entrega evidencias académicas y revisa los mensajes del docente.</p>
+            <a class="boton boton-estudiantes" href="https://script.google.com/macros/s/AKfycbxSk3JRtjf691QFN7up-B5pZYb76jUswZDTcIr6XP8IgT30gKBzqs6g43yaBZ3D7LTm/exec" target="_blank" rel="noopener noreferrer">
+              Ingresar como estudiante
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+          </article>
 
-      <h2>👨‍🎓 Portal del estudiante</h2>
+          <article class="tarjeta docentes">
+            <span class="icono-tarjeta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5.5 3 8.5 8 10 5-1.5 8-4.5 8-10V7l-8-4Zm-3 9 2 2 4-4"/></svg></span>
+            <h3>Panel privado del docente</h3>
+            <p>Gestiona matrículas, actividades, calificaciones, recuperaciones, cuestionarios, guías y herramientas de diagnóstico desde un espacio administrativo.</p>
+            <a class="boton boton-docentes" href="https://script.google.com/macros/s/AKfycbyIYhEO-owt3FCZRcELFN47u3afkY-NnMVq5Znutir2BqgxkbbH4u66fgESF96OpwrZZw/exec" target="_blank" rel="noopener noreferrer">
+              Ingresar como docente
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+            <span class="avisoprivado"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Acceso restringido a la cuenta de Google autorizada. Este sitio no almacena contraseñas ni datos de estudiantes.</span>
+          </article>
+        </div>
+      </section>
+    </main>
 
-      <p>
-        Consulta calificaciones, desarrolla cuestionarios,
-        descarga guías de estudio, entrega evidencias
-        y revisa tus mensajes.
-      </p>
-
-    <a
-  class="boton"
-  href="https://script.google.com/macros/s/AKfycbxSk3JRtjf691QFN7up-B5pZYb76jUswZDTcIr6XP8IgT30gKBzqs6g43yaBZ3D7LTm/exec"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  🎓 Acceso de estudiantes
-</a>
-    </section>
-
-
-    <section class="tarjeta">
-
-      <h2>👨‍🏫 Panel del docente</h2>
-
-      <p>
-        Accede a las herramientas privadas de
-        administración, matrículas, calificaciones,
-        cuestionarios, guías y diagnóstico.
-      </p>
-
-      <button
-        class="boton boton-docente pendiente"
-        type="button"
-        disabled
-      >
-        🔐 Acceso docente — Próximamente
-      </button>
-
-    </section>
-
-
-    <footer>
-
-      SYNAPSE ENGLISH
-      <p>Plataforma Educativa PRO</p>
-
-    </footer>
-
-  </main>
-
+    <footer class="pie"><strong>SYNAPSE ENGLISH</strong><span>Campus académico · Teacher Yeison Quintana Téllez</span></footer>
+  </div>
 </body>
 </html>
