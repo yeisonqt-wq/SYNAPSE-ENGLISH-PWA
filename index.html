@@ -6,6 +6,9 @@
   <meta name="theme-color" content="#0a1324">
   <meta name="description" content="SYNAPSE ENGLISH: acceso al campus académico para estudiantes y docentes de Yeison Quintana Téllez.">
   <title>SYNAPSE ENGLISH | Campus académico</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -39,6 +42,12 @@
     .subtitulo{font-weight:750;letter-spacing:.16em;font-size:12px;color:var(--dorado);text-transform:uppercase;margin:0 0 15px}
     .intro{max-width:650px;margin:0 auto;color:#bbcbe0;font-size:clamp(14px,1.8vw,17px)}
     .seccion-titulo{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+    .instalacion{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 35px;padding:17px 21px;border:1px solid #344e6f;border-radius:15px;background:#14233a}
+    .instalacion strong{font-size:14px;color:#f2f7ff}
+    .instalacion p{margin:3px 0 0;font-size:12px;color:#aebfd5}
+    .boton-instalar{width:auto;white-space:nowrap;margin:0;min-height:42px;padding:9px 17px;background:#244b79;color:white;border:1px solid #4b7fb9;border-radius:10px;font-family:inherit;font-size:13px;font-weight:700;line-height:1.3;cursor:pointer}
+    .boton-instalar:hover{background:#3065a1}
+    .boton-instalar[hidden]{display:none}
     .seccion-titulo h2{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;margin:0;white-space:nowrap}
     .seccion-titulo::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,#3a5576,transparent)}
     .accesos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:0 0 45px}
@@ -61,7 +70,7 @@
     .avisoprivado svg{width:15px;height:15px;flex:none;margin-top:2px;stroke:#e6bf70;fill:none;stroke-width:1.8}
     .pie{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:24px 0 32px;border-top:1px solid #314561;color:#9badc5;font-size:12px}
     .pie strong{color:#c9d8ed;letter-spacing:.09em}
-    @media(max-width:750px){.presentacion{padding:59px 0 38px}.accesos{grid-template-columns:1fr;gap:17px}.tarjeta{min-height:315px;padding:25px}.etiqueta-superior{display:none}}
+    @media(max-width:750px){.presentacion{padding:59px 0 38px}.accesos{grid-template-columns:1fr;gap:17px}.tarjeta{min-height:315px;padding:25px}.etiqueta-superior{display:none}.instalacion{flex-direction:column;align-items:stretch}.boton-instalar{width:100%}}
     @media(max-width:400px){.marco{width:calc(100% - 26px)}.marca-texto strong{font-size:12px}.marca-texto span{font-size:9px}.presentacion{padding-top:48px}.tarjeta{padding:22px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.boton{transition:none}.boton:hover{transform:none}}
   </style>
@@ -87,6 +96,13 @@
       </section>
 
       <section aria-labelledby="titulo-accesos">
+        <aside class="instalacion" aria-label="Instalar SYNAPSE ENGLISH">
+          <div>
+            <strong>Instala SYNAPSE ENGLISH en tu dispositivo</strong>
+            <p id="ayudaInstalacion">En Android: menú de Chrome → Instalar aplicación. En iPhone: Safari → Compartir → Añadir a pantalla de inicio.</p>
+          </div>
+          <button id="botonInstalar" class="boton-instalar" type="button" hidden>Instalar aplicación</button>
+        </aside>
         <div class="seccion-titulo"><h2 id="titulo-accesos">Accesos al campus</h2></div>
         <div class="accesos">
           <article class="tarjeta estudiantes">
@@ -115,5 +131,47 @@
 
     <footer class="pie"><strong>SYNAPSE ENGLISH</strong><span>Campus académico · Teacher Yeison Quintana Téllez</span></footer>
   </div>
+  <script>
+    (() => {
+      'use strict';
+      const boton = document.getElementById('botonInstalar');
+      const ayuda = document.getElementById('ayudaInstalacion');
+      let eventoInstalacion = null;
+
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(() => {
+            // La página sigue funcionando incluso sin la función de instalación.
+          });
+        });
+      }
+
+      window.addEventListener('beforeinstallprompt', evento => {
+        evento.preventDefault();
+        eventoInstalacion = evento;
+        boton.hidden = false;
+        ayuda.textContent = 'Puedes instalar el campus como una aplicación desde este botón.';
+      });
+
+      boton.addEventListener('click', async () => {
+        if (!eventoInstalacion) return;
+        const pendiente = eventoInstalacion;
+        eventoInstalacion = null;
+        boton.hidden = true;
+        try {
+          await pendiente.prompt();
+          await pendiente.userChoice;
+        } catch (_) {
+          ayuda.textContent = 'Para instalar, utiliza el menú de tu navegador.';
+        }
+      });
+
+      window.addEventListener('appinstalled', () => {
+        boton.hidden = true;
+        eventoInstalacion = null;
+        ayuda.textContent = 'SYNAPSE ENGLISH se ha instalado correctamente.';
+      });
+    })();
+  </script>
 </body>
 </html>
